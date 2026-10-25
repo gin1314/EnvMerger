@@ -1,0 +1,48 @@
+{
+    "name": "gin/env-merger",
+    "description": "Smart, format-preserving .env merger with interactive conflict resolution and Laravel integration",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gin",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "symfony/console": "^6.4 || ^7.0",
+        "laravel/prompts": "^0.1 || ^0.2 || ^0.3"
+    },
+    "require-dev": {
+        "pestphp/pest": "^2.0 || ^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Gin\\EnvMerger\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Gin\\EnvMerger\\Tests\\": "tests/"
+        }
+    },
+    "bin": [
+        "bin/env-merge"
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Gin\\EnvMerger\\Laravel\\EnvMergerServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

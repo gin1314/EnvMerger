@@ -1,0 +1,34 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+$autoloadFiles = [
+    __DIR__ . '/../vendor/autoload.php',
+    __DIR__ . '/../../../autoload.php',
+];
+
+$autoloaderFound = false;
+foreach ($autoloadFiles as $file) {
+    if (file_exists($file)) {
+        require_once $file;
+        $autoloaderFound = true;
+        break;
+    }
+}
+
+if (! $autoloaderFound) {
+    fwrite(STDERR, "Error: Composer dependencies not installed. Please run 'composer install'.\n");
+    exit(1);
+}
+
+use Gin\EnvMerger\Commands\MergeCommand;
+use Symfony\Component\Console\Application;
+
+$application = new Application('EnvMerger CLI', '1.0.0');
+
+$mergeCommand = new MergeCommand();
+$application->add($mergeCommand);
+$application->setDefaultCommand('env:merge', true);
+
+$application->run();
