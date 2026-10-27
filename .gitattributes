@@ -1,0 +1,64 @@
+# ------------------------------------------------------------------------------
+# Git Attributes configuration
+# ------------------------------------------------------------------------------
+
+# 1. Line Endings & Normalization
+# ------------------------------------------------------------------------------
+# Set default behavior to automatically normalize line endings to LF
+* text=auto eol=lf
+
+# Explicitly define text file types and diff drivers
+*.php text eol=lf diff=php
+*.json text eol=lf
+*.md text eol=lf
+*.xml text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.stub text eol=lf
+
+# Executable scripts
+/bin/* text eol=lf
+*.sh text eol=lf
+*.bash text eol=lf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Binary file types
+*.ico binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.phar binary
+*.pdf binary
+*.zip binary
+*.tar.gz binary
+
+# 2. Export Ignore (Composer / Distribution Archives)
+# ------------------------------------------------------------------------------
+# Exclude files not needed in production distribution archives (git archive / Composer)
+/.gitattributes export-ignore
+/.gitignore export-ignore
+/.editorconfig export-ignore
+/.github export-ignore
+/.idea export-ignore
+/.vscode export-ignore
+
+# Tests and QA configurations
+/tests export-ignore
+/phpunit.xml export-ignore
+/phpunit.xml.dist export-ignore
+/pest.xml export-ignore
+/phpstan.neon export-ignore
+/phpstan.neon.dist export-ignore
+/phpstan.baseline.neon export-ignore
+/.php-cs-fixer.php export-ignore
+/.php-cs-fixer.dist.php export-ignore
+/.php-cs-fixer.cache export-ignore
+/pint.json export-ignore
+
+# Build, dependency, and local development artifacts
+/composer.lock export-ignore
+/scratch export-ignore
+.env* export-ignore
